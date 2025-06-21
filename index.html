@@ -7,34 +7,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
   <style>
     body {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      min-height: 100vh;
+      height: 100vh;
       background-color: #fae1dd;
       font-family: 'DM Serif Text', sans-serif;
       margin: 0;
       text-align: center;
-      padding: 20px;
-    }
-
-    h1 {
-      margin-bottom: 5px;
-    }
-
-    .psorpresa {
-      margin-top: 0;
-      margin-bottom: 20px;
     }
 
     .contenedor {
       position: relative;
-      width: 360px;
-      max-width: 70%;
     }
 
     .superior {
@@ -46,9 +34,6 @@
       transition: transform 0.75s;
       transform-origin: top;
       z-index: 1;
-      left: 0;
-      right: 0;
-      margin: auto;
     }
 
     .mensaje {
@@ -61,13 +46,9 @@
       font-size: 22px;
       background: #eae2b7;
       width: 360px;
-      max-width: 100%;
       height: 240px;
       z-index: -1;
       transition: transform 0.75s ease-in-out;
-      left: 0;
-      right: 0;
-      margin: auto;
     }
 
     .mensaje:before {
@@ -97,18 +78,20 @@
       position: absolute;
       color: #f6406a;
       top: 90px;
-      left: 50%;
-      transform: translateX(-50%);
+      right: 155px;
       font-size: 50px;
       animation: palpitar 0.6s linear infinite;
     }
 
+    .psorpresa {
+      margin-top: -10px;
+    }
+
     .botones {
-      margin-top: 20px;
+      margin-top: 15px;
       display: flex;
       justify-content: center;
       gap: 20px;
-      flex-wrap: wrap;
     }
 
     .boton {
@@ -144,45 +127,31 @@
     }
 
     @keyframes palpitar {
-      0% {
-        transform: scale(1.07);
-      }
-      80% {
-        transform: scale(1.0);
-      }
-      100% {
-        transform: scale(1.08);
-      }
+      0% { transform: scale(1.07); }
+      80% { transform: scale(1.0); }
+      100% { transform: scale(1.08); }
     }
 
     @media (max-width: 768px) {
-      .contenedor {
-        width: 90%;
-      }
-
       .mensaje {
-        width: 100%;
+        width: 90%;
         height: auto;
         padding: 1rem;
         font-size: 18px;
       }
-
       .mensaje:before {
         top: 12px;
         left: 12px;
         right: 12px;
         bottom: 45px;
       }
-
       .mensaje p {
         top: -15px;
         font-size: 1rem;
       }
-
       .bx {
         top: 80px;
-        left: 50%;
-        transform: translateX(-50%);
+        right: 120px;
         font-size: 40px;
       }
     }
