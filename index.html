@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
   <style>
     body {
       display: flex;
@@ -127,15 +127,9 @@
     }
 
     @keyframes palpitar {
-      0% {
-        transform: scale(1.07);
-      }
-      80% {
-        transform: scale(1.0);
-      }
-      100% {
-        transform: scale(1.08);
-      }
+      0% { transform: scale(1.07); }
+      80% { transform: scale(1.0); }
+      100% { transform: scale(1.08); }
     }
 
     @media (max-width: 768px) {
@@ -145,19 +139,16 @@
         padding: 1rem;
         font-size: 18px;
       }
-
       .mensaje:before {
         top: 12px;
         left: 12px;
         right: 12px;
         bottom: 45px;
       }
-
       .mensaje p {
         top: -15px;
         font-size: 1rem;
       }
-
       .bx {
         top: 80px;
         right: 120px;
