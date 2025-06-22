@@ -1,248 +1,61 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carta de San Valentín</title>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Eu te amo Caindo ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #fff0f5;
+      font-family: Arial, sans-serif;
+    }
 
-    <!-- Fuentes Google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Young+Serif&display=swap"
-      rel="stylesheet"
-    />
+    .eu-te-amo {
+      position: absolute;
+      top: -50px;
+      color: #ff1a75;
+      font-size: 24px;
+      font-weight: bold;
+      animation: cair linear infinite;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+    }
 
-    <!-- Boxicons para iconos -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-
-    <style>
-      /* --- CSS Integrado --- */
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 100vh;
-        background-color: #fae1dd;
-        font-family: 'DM Serif Text', sans-serif;
-        margin: 0;
+    @keyframes cair {
+      0% {
+        transform: translateY(-50px) translateX(0) rotate(0deg);
+        opacity: 1;
       }
-
-      .contenedor {
-        position: relative;
+      100% {
+        transform: translateY(100vh) translateX(50px) rotate(360deg);
+        opacity: 0;
       }
+    }
+  </style>
+</head>
+<body>
 
-      .superior {
-        position: absolute;
-        border-left: 180px solid transparent;
-        border-right: 180px solid transparent;
-        border-top: 120px solid #f08080;
-        border-bottom: 120px solid transparent;
+<script>
+  function criarEuTeAmo() {
+    const elemento = document.createElement('div');
+    elemento.classList.add('eu-te-amo');
+    elemento.textContent = 'Eu te amo ❤️';
 
-        transition: transform 0.75s;
-        transform-origin: top;
-      }
+    elemento.style.left = Math.random() * window.innerWidth + 'px';
+    elemento.style.animationDuration = (Math.random() * 3 + 3) + 's';
 
-      .mensaje {
-        position: absolute;
-        padding: 1.5rem;
-        line-height: 1.5rem;
-        box-sizing: border-box;
-        text-align: center;
-        font-family: 'Brush Script MT', cursive;
-        font-size: 22px;
-        background: #eae2b7;
-        width: 360px;
-        height: 240px;
-        z-index: -1;
-        transition: transform 0.75s ease-in-out;
-      }
+    document.body.appendChild(elemento);
 
-      .mensaje:before {
-        content: "";
-        border-style: dotted;
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        right: 12px;
-        bottom: 55px;
-      }
+    setTimeout(() => {
+      elemento.remove();
+    }, 6000);
+  }
 
-      .mensaje p {
-        position: relative;
-        top: -10px;
-        font-size: 1.2rem;
-      }
+  setInterval(criarEuTeAmo, 200);
+</script>
 
-      .carta {
-        border-left: 180px solid #f8ad9d;
-        border-right: 180px solid #f4978e;
-        border-top: 120px solid transparent;
-        border-bottom: 120px solid #f8ad9d;
-      }
-
-      .bx {
-        position: absolute;
-        color: #f6406a;
-        top: 90px;
-        right: 155px;
-        font-size: 50px;
-        animation: palpitar 0.6s linear infinite;
-      }
-
-      .psorpresa {
-        margin-top: -10px;
-      }
-
-      .botones {
-        margin-top: 15px;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-      }
-
-      .boton {
-        padding: 10px 20px;
-        background: linear-gradient(135deg, #ff66b2, #ff4081);
-        background-size: 200% 200%;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      }
-
-      .boton:hover {
-        background-position: 100% 100%;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-      }
-
-      .abrir-superior {
-        transform: rotateX(180deg);
-      }
-
-      .abrir-mensaje {
-        transform: translateY(-100px);
-      }
-
-      .bx-rotada {
-        color: #f6406a;
-        animation: none;
-      }
-
-      @keyframes palpitar {
-        0% {
-          transform: scale(1.07);
-        }
-        80% {
-          transform: scale(1);
-        }
-        100% {
-          transform: scale(1.08);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .mensaje:before {
-          content: "";
-          border-style: dotted;
-          position: absolute;
-          top: 12px;
-          left: 12px;
-          right: 12px;
-          bottom: 45px;
-        }
-
-        .mensaje p {
-          position: relative;
-          top: -15px;
-          font-size: 1rem;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <h1>Pra você Carol <3</h1>
-    <p class="psorpresa">Uma pequena carta de amor...</p>
-
-    <div class="contenedor" id="AbrirContenedor">
-      <div class="superior"></div>
-      <div class="mensaje">
-        Mesmo com tão pouco tempo, já sinto algo forte por você. É rápido, eu sei… mas dizem que nao tem tempo pra amar, se vc deixar eu posso te amar toda hora. Eu te amo. ❤️
-I love you.
-        <p>Hidley William.</p>
-      </div>
-      <div class="carta">
-        <i class="bx bxs-heart"></i>
-      </div>
-    </div>
-
-    <div class="botones">
-      <button class="boton" id="Abrir">Abrir</button>
-      <button class="boton" id="Cerrar">Fechar</button>
-    </div>
-
-    <script>
-      // --- JavaScript Integrado ---
-
-      const btnAbrir = document.querySelector("#Abrir");
-      const btnCerrar = document.querySelector("#Cerrar");
-      const contenedor = document.querySelector("#AbrirContenedor");
-
-      function abrirCarta() {
-        const ElementoSuperior = document.querySelector(".superior");
-        const h1 = document.querySelector("h1");
-        const p = document.querySelector("p");
-        const IconoCorazon = document.querySelector(".bx");
-        const ElementoMensaje = document.querySelector(".mensaje");
-
-        ElementoSuperior.classList.add("abrir-superior");
-
-        h1.style.transform = "translateY(-120px)";
-        p.style.transform = "translateY(-120px)";
-        h1.style.transition = "transform 0.65s ease-in-out";
-        p.style.transition = "transform 0.65s ease-in-out";
-
-        IconoCorazon.classList.add("bx-rotada");
-
-        setTimeout(() => {
-          ElementoSuperior.style.zIndex = -1;
-          ElementoMensaje.classList.add("abrir-mensaje");
-        }, 700);
-      }
-
-      btnAbrir.addEventListener("click", abrirCarta);
-
-      btnCerrar.addEventListener("click", () => {
-        const ElementoSuperior = document.querySelector(".superior");
-        const ElementoMensaje = document.querySelector(".mensaje");
-
-        ElementoMensaje.classList.remove("abrir-mensaje");
-
-        setTimeout(() => {
-          const h1 = document.querySelector("h1");
-          const p = document.querySelector("p");
-          const IconoCorazon = document.querySelector(".bx");
-
-          h1.style.transform = "translateY(0px)";
-          p.style.transform = "translateY(0px)";
-
-          ElementoSuperior.style.zIndex = 0;
-          ElementoSuperior.classList.remove("abrir-superior");
-
-          IconoCorazon.classList.remove("bx-rotada");
-        }, 700);
-      });
-
-      contenedor.addEventListener("click", abrirCarta);
-    </script>
-  </body>
+</body>
 </html>
