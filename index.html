@@ -1,61 +1,322 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Eu te amo Caindo ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #fff0f5;
-      font-family: Arial, sans-serif;
-    }
-
-    .eu-te-amo {
-      position: absolute;
-      top: -50px;
-      color: #ff1a75;
-      font-size: 24px;
-      font-weight: bold;
-      animation: cair linear infinite;
-      user-select: none;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-
-    @keyframes cair {
-      0% {
-        transform: translateY(-50px) translateX(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) translateX(50px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Amada Carol ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)" opacity="0.5"/></svg>') repeat;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+        
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 40px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .letter-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            text-align: justify;
+            animation: fadeIn 1.5s ease-out 0.5s both;
+        }
+        
+        .letter-text:first-child {
+            font-size: 1.3em;
+            font-weight: 500;
+            color: #ff6b6b;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em;
+            color: #ff6b6b;
+            animation: fadeIn 2s ease-out 1s both;
+        }
+        
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 107, 107, 0.7);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .heart:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .heart:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .heart:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .heart:nth-child(6) { left: 60%; animation-delay: 0.5s; }
+        .heart:nth-child(7) { left: 70%; animation-delay: 1.5s; }
+        .heart:nth-child(8) { left: 80%; animation-delay: 2.5s; }
+        .heart:nth-child(9) { left: 90%; animation-delay: 3.5s; }
+        
+        .decorative-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid transparent;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffd93d, #ff6b6b) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+        
+        .pulse-heart {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: rgba(255, 107, 107, 0.1);
+            animation: pulse 2s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .letter-text {
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<script>
-  function criarEuTeAmo() {
-    const elemento = document.createElement('div');
-    elemento.classList.add('eu-te-amo');
-    elemento.textContent = 'Eu te amo ❤️';
-
-    elemento.style.left = Math.random() * window.innerWidth + 'px';
-    elemento.style.animationDuration = (Math.random() * 3 + 3) + 's';
-
-    document.body.appendChild(elemento);
-
-    setTimeout(() => {
-      elemento.remove();
-    }, 6000);
-  }
-
-  setInterval(criarEuTeAmo, 200);
-</script>
-
+    <div class="pulse-heart">💖</div>
+    
+    <div class="container">
+        <div class="decorative-border"></div>
+        
+        <div class="hearts">
+            <div class="heart">💕</div>
+            <div class="heart">💖</div>
+            <div class="heart">💗</div>
+            <div class="heart">💝</div>
+            <div class="heart">💘</div>
+            <div class="heart">💕</div>
+            <div class="heart">💖</div>
+            <div class="heart">💗</div>
+            <div class="heart">💝</div>
+        </div>
+        
+        <div class="header">
+            <h1>Para Minha Amada Carol</h1>
+            <div class="subtitle">Uma carta do coração 💕</div>
+        </div>
+        
+        <div class="content">
+            <div class="letter-text">
+                Minha querida Carol,
+            </div>
+            
+            <div class="letter-text">
+                Foram apenas alguns dias desde que te conheci, mas já me apaixonei de uma forma que eu nunca imaginei ser possível. Você me conquistou de maneira tão encantadora e atrativa que mudou completamente meu mundo.
+            </div>
+            
+            <div class="letter-text">
+                Todas as noites eu fico admirando suas fotos, vendo cada detalhe da sua perfeição. Cada imagem sua é como uma obra de arte que guardo no meu coração. Sei que ainda é cedo para falar certas palavras...
+            </div>
+            
+            <div class="letter-text">
+                Mas para mim, a obra de arte mais linda que existe é ver seus olhos. Eles guardam uma beleza única, uma luz especial que me hipnotiza e me faz sentir coisas que eu nunca senti antes.
+            </div>
+            
+            <div class="letter-text">
+                Carol, você chegou na minha vida como um presente inesperado. Em tão pouco tempo, você já se tornou tão importante para mim. Obrigado por existir e por ter me permitido te conhecer.
+            </div>
+            
+            <div class="signature">
+                Com todo meu amor,<br>
+                Seu eterno apaixonado 💕
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Adiciona efeito de hover nos corações
+        document.querySelectorAll('.heart').forEach(heart => {
+            heart.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.5)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            heart.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Efeito de partículas de coração ao clicar
+        document.addEventListener('click', function(e) {
+            createHeartParticle(e.clientX, e.clientY);
+        });
+        
+        function createHeartParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.innerHTML = '💖';
+            particle.style.position = 'fixed';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.fontSize = '20px';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1000';
+            particle.style.animation = 'particleFloat 2s ease-out forwards';
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }
+        
+        // Adiciona animação para as partículas
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100px) scale(0.5);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
