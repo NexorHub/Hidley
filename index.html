@@ -375,19 +375,19 @@
         </header>
 
         <nav class="nav-buttons">
-            <a href="#" class="nav-btn">
+            <a href="#" class="nav-btn" onclick="alert('Link para Key Premium ainda não definido')">
                 <i data-lucide="key"></i>
                 Key Premium
             </a>
-            <a href="#" class="nav-btn">
+            <a href="https://youtube.com/@nexorhub" class="nav-btn" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="youtube"></i>
                 YouTube
             </a>
-            <a href="#" class="nav-btn">
+            <a href="https://discord.gg/nexorhub" class="nav-btn" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="message-circle"></i>
                 Discord
             </a>
-            <a href="#" class="nav-btn">
+            <a href="#" class="nav-btn" onclick="alert('Seção de tutoriais em desenvolvimento')">
                 <i data-lucide="book-open"></i>
                 Tutoriais
             </a>
@@ -467,8 +467,6 @@ loadstring(game:HttpGet("https://pastefy.app/ArsenalScript"))()
                 </button>
             </div>
 
-            
-
             <div class="script-card">
                 <div class="script-header">
                     <div class="status-indicator offline"></div>
@@ -500,10 +498,48 @@ loadstring(game:HttpGet("https://pastefy.app/ArsenalScript"))()
         </footer>
     </div>
 
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+        // Função para inicializar os ícones Lucide de forma mais robusta
+        function initLucideIcons() {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            } else {
+                // Fallback: usar emojis se Lucide não carregar
+                const iconMappings = {
+                    'key': '🔑',
+                    'youtube': '📺',
+                    'message-circle': '💬',
+                    'book-open': '📖',
+                    'search': '🔍',
+                    'clipboard': '📋',
+                    'check': '✅',
+                    'x': '❌',
+                    'wrench': '🔧'
+                };
+                
+                document.querySelectorAll('[data-lucide]').forEach(icon => {
+                    const iconName = icon.getAttribute('data-lucide');
+                    if (iconMappings[iconName]) {
+                        icon.textContent = iconMappings[iconName];
+                        icon.style.fontSize = '16px';
+                    }
+                });
+            }
+        }
+
+        // Inicializar ícones quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tentar inicializar imediatamente
+            initLucideIcons();
+            
+            // Tentar novamente após um pequeno delay caso a biblioteca ainda esteja carregando
+            setTimeout(initLucideIcons, 100);
+            setTimeout(initLucideIcons, 500);
+        });
+
+        // Também inicializar quando o script Lucide carregar
+        window.addEventListener('load', initLucideIcons);
 
         function copyScript(button) {
             const scriptCode = button.parentElement.querySelector('.script-code').textContent.trim();
@@ -514,14 +550,14 @@ loadstring(game:HttpGet("https://pastefy.app/ArsenalScript"))()
                 button.style.color = '#00aa00';
                 
                 // Re-initialize the new check icon
-                lucide.createIcons();
+                initLucideIcons();
                 
                 setTimeout(() => {
                     button.innerHTML = originalHTML;
                     button.style.background = '#ffffff';
                     button.style.color = '#000000';
                     // Re-initialize the original icon
-                    lucide.createIcons();
+                    initLucideIcons();
                 }, 2000);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
@@ -530,13 +566,13 @@ loadstring(game:HttpGet("https://pastefy.app/ArsenalScript"))()
                 button.style.background = '#ffffff';
                 button.style.color = '#aa0000';
                 
-                lucide.createIcons();
+                initLucideIcons();
                 
                 setTimeout(() => {
                     button.innerHTML = originalHTML;
                     button.style.background = '#ffffff';
                     button.style.color = '#000000';
-                    lucide.createIcons();
+                    initLucideIcons();
                 }, 2000);
             });
         }
@@ -579,9 +615,14 @@ loadstring(game:HttpGet("https://pastefy.app/ArsenalScript"))()
         // Entry animation
         window.addEventListener('load', () => {
             const cards = document.querySelectorAll('.script-card');
-            cards.forEach((card, index) => {
+              cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(50px)';
                     card.style.animation = 'fadeIn 0.6s ease forwards';
-                }, index *
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
